@@ -1,7 +1,11 @@
 import { MessageCircle, MoveRight } from 'lucide-react';
-import Button from '../atoms/button/Button';
+import Button from '../../atoms/button/Button';
+import { useNavigate } from 'react-router';
+import { ToastContainer } from 'react-toastify';
+import type React from 'react';
 
-const HomePage = () => {
+const HomePage: React.FC = () => {
+  const navigate = useNavigate();
   return (
     <div className="flex h-screen w-screen items-center justify-center bg-gradient-to-br from-blue-100 via-purple-100 to-pink-100">
       <div className="bg-white rounded-3xl shadow-2xl p-10 flex flex-col items-center gap-6">
@@ -10,10 +14,16 @@ const HomePage = () => {
         <p className="text-gray-500 text-lg text-center">
           Collaborate, chat, and organize your team in real time.
         </p>
-        <Button className="flex align-middle gap-2 mt-4 px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-full shadow-lg hover:scale-105 transition-transform font-semibold">
+        <Button
+          onClick={() => {
+            navigate('/login');
+          }}
+          className="flex align-middle gap-2 mt-4 px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-full shadow-lg hover:scale-105 transition-transform font-semibold"
+        >
           <MoveRight /> Go!
         </Button>
       </div>
+      <ToastContainer />
     </div>
   );
 };
