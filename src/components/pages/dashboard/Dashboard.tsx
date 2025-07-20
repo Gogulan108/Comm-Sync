@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import Sidebar from './SideBar';
-import Header from './Header';
-import ThreadSlider from './ThreadSlider';
-import ChatArea from './ChatArea';
+import Sidebar from '../../organisms/SideBar';
+import Header from '../../organisms/Header';
+import ThreadSlider from '../../organisms/ThreadSlider';
+import ChatArea from '../../organisms/ChatArea';
 
 const Dashboard: React.FC = () => {
   const [selectedChannel, setSelectedChannel] = useState({});

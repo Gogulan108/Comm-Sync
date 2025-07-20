@@ -1,9 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
-import Button from '../../atoms/button/Button';
+
 import { getAuth, signOut } from 'firebase/auth';
 import { useNavigate } from 'react-router';
-import AddChannelDialog from '../../molecules/addChannelDialog/AddChannelDialog';
-import { useGetAllChannels } from '../../../api/hooks/useGetAllChannels';
+import AddChannelDialog from '../molecules/addChannelDialog/AddChannelDialog';
+import { useGetAllChannels } from '../../api/hooks/useGetAllChannels';
+import Button from '../atoms/button/Button';
 
 type SidebarProps = {
   selectedChannel: any;
@@ -66,7 +67,7 @@ const Sidebar: React.FC<SidebarProps> = ({ selectedChannel, onSelectChannel }) =
 
   return (
     <aside className="w-64 bg-gray-100 text-black flex flex-col">
-      <div className="p-4 font-bold text-xl border-b border-gray-800">Slack Workspace Clone</div>
+      <div className="p-4 font-bold text-xl border-b border-gray-800">Comm-Sync Workspace</div>
       <nav className="flex-1 p-4 overflow-y-auto">
         <div className="mb-2 text-xs text-gray-600 uppercase tracking-wider font-semibold">
           Channels

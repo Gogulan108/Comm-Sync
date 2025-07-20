@@ -1,8 +1,8 @@
 import React from 'react';
 import MessageList from './MessageList';
 import MessageInput from './MessageInput';
-import { useSendMessage } from '../../../api/hooks/useSendMessage';
-import { useAuth } from '../../../context/AuthContext';
+import { useSendMessage } from '../../api/hooks/useSendMessage';
+import { useAuth } from '../../context/AuthContext';
 
 type ChatAreaProps = {
   channelId: any;

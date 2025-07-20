@@ -1,69 +1,105 @@
-# React + TypeScript + Vite
+# Comm-Sync Workspace
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern Slack-like chat application built with **React**, **TypeScript**, **Vite**, **Firebase**, and **Tailwind CSS**.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+- **Real-time chat** with channels and threads
+- **User authentication** (Firebase Auth)
+- **Channel management** (create, join, private/public)
+- **Threaded replies** for focused conversations
+- **AI chat suggestions** (planned, via Firebase Functions)
+- **Responsive UI** with atomic design (atoms, molecules, organisms)
+- **Modern styling** using Tailwind CSS
+- **Error boundaries** and toast notifications
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Tech Stack
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+- [React](https://react.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Vite](https://vitejs.dev/)
+- [Firebase (Auth, Firestore, Functions)](https://firebase.google.com/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [React Query](https://tanstack.com/query/latest)
+- [React Router](https://reactrouter.com/)
+- [React Toastify](https://fkhadra.github.io/react-toastify/)
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+---
+
+## Project Structure
+
+```
+src/
+├── api/            # API calls and hooks
+├── components/
+│   ├── atoms/      # Smallest UI elements
+│   ├── molecules/  # Combinations of atoms
+│   ├── organisms/  # Large UI sections
+│   └── pages/      # Page-level components
+├── context/        # React context providers
+├── firebase/       # Firebase config and client
+├── hooks/          # Custom hooks
+├── styles/         # Global styles
+├── App.tsx
+├── main.tsx
+└── index.css
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Getting Started
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+1. **Install dependencies**
+
+   ```sh
+   npm install
+   ```
+
+2. **Configure Firebase**
+   - Update `src/firebase/FirebaseConfig.ts` with your Firebase project credentials.
+
+3. **Run locally**
+
+   ```sh
+   npm run dev
+   ```
+
+4. **Build for production**
+   ```sh
+   npm run build
+   ```
+
+---
+
+## Firebase Functions (AI Suggestions)
+
+To enable AI chat suggestions:
+
+1. Install Node.js and Firebase CLI.
+2. Run `firebase init functions` and set up your function in `functions/src/index.ts`.
+3. Deploy with `firebase deploy --only functions`.
+4. Call your function from the frontend using `httpsCallable`.
+
+---
+
+## ESLint & Code Quality
+
+- Uses recommended ESLint configs for React and TypeScript.
+- See the included examples for expanding ESLint configuration.
+
+---
+
+## Contributing
+
+Pull requests and issues are welcome!  
+Please follow atomic design principles and keep logic separated from UI.
+
+---
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
