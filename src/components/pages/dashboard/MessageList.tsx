@@ -72,7 +72,7 @@ const MessageList: React.FC<MessageListProps> = ({ channelId, onOpenThread }) =>
                 </div>
               )}
               <div
-                className={`relative px-4 py-2 rounded-2xl max-w-xl break-words ${
+                className={`relative px-4 py-2 rounded-2xl w-full break-words ${
                   user?.uid === msg.senderId
                     ? 'bg-blue-100 text-blue-900'
                     : 'bg-gray-100 text-gray-900'

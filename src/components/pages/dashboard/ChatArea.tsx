@@ -23,7 +23,7 @@ const ChatArea: React.FC<ChatAreaProps> = ({ channelId, onOpenThread }) => {
   };
 
   return (
-    <div className="flex flex-col h-[90%] w-auto">
+    <div className="flex flex-col h-full w-auto">
       <div className="flex-1 overflow-y-auto">
         <MessageList channelId={channelId} onOpenThread={onOpenThread} />
       </div>
