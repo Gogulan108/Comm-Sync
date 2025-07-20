@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Button from '../../atoms/button/Button';
+import Button from '../atoms/button/Button';
 
 type MessageInputProps = {
   onSend: (text: string) => void;

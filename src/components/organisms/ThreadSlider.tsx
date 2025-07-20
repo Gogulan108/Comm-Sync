@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import Button from '../../atoms/button/Button';
-import { useSendReplies } from '../../../api/hooks/useSendReplies';
-import { useAuth } from '../../../context/AuthContext';
-import { useMessageReplies } from '../../../api/sevices/GetReplies';
 import { Reply } from 'lucide-react';
+import { useSendReplies } from '../../api/hooks/useSendReplies';
+import { useMessageReplies } from '../../api/sevices/GetReplies';
+import { useAuth } from '../../context/AuthContext';
+import Button from '../atoms/button/Button';
 
 type ThreadSliderProps = {
   open: boolean;
@@ -137,7 +137,7 @@ const ThreadSlider: React.FC<ThreadSliderProps> = ({ open, message, channelId, o
           {/* Reply input */}
           <form onSubmit={handleReply} className="p-4 flex gap-2 bg-gray-100">
             <input
-              className="flex-1 px-3 py-2 border bg-white border-white bg-transparent placeholder:text-gray-300 text-base rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-300 transition"
+              className="flex-1 px-3 py-2 border border-white bg-transparent placeholder:text-gray-300 text-base rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-300 transition"
               placeholder="Reply to thread..."
               value={reply}
               onChange={(e) => setReply(e.target.value)}

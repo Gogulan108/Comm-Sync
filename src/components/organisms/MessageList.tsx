@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { getChannelMessages } from '../../../api/sevices/GetMessages';
-import { useAuth } from '../../../context/AuthContext';
+import { getChannelMessages } from '../../api/sevices/GetMessages';
+import { useAuth } from '../../context/AuthContext';
 
 type MessageListProps = {
   channelId: any;

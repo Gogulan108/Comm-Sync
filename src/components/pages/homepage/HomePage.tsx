@@ -10,7 +10,7 @@ const HomePage: React.FC = () => {
     <div className="flex h-screen w-screen items-center justify-center bg-gradient-to-br from-blue-100 via-purple-100 to-pink-100">
       <div className="bg-white rounded-3xl shadow-2xl p-10 flex flex-col items-center gap-6">
         <MessageCircle className="w-16 h-16 text-blue-500 animate-bounce" />
-        <h1 className="text-4xl font-bold text-blue-600">Welcome to the Slack Clone</h1>
+        <h1 className="text-4xl font-bold text-blue-600">Welcome to the Comm-Sync</h1>
         <p className="text-gray-500 text-lg text-center">
           Collaborate, chat, and organize your team in real time.
         </p>
