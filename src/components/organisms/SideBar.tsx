@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect } from 'react';
-
 import { getAuth, signOut } from 'firebase/auth';
 import { useNavigate } from 'react-router';
 import AddChannelDialog from '../molecules/addChannelDialog/AddChannelDialog';
@@ -8,10 +7,19 @@ import Button from '../atoms/button/Button';
 
 type SidebarProps = {
   selectedChannel: any;
-  onSelectChannel: (val) => void;
+  onSelectChannel: (val: any) => void;
+  dmUsers: any[];
+  onSelectDmUser: (user: any) => void;
+  selectedDmUser: any;
 };
 
-const Sidebar: React.FC<SidebarProps> = ({ selectedChannel, onSelectChannel }) => {
+const Sidebar: React.FC<SidebarProps> = ({
+  selectedChannel,
+  onSelectChannel,
+  dmUsers,
+  onSelectDmUser,
+  selectedDmUser,
+}) => {
   const navigate = useNavigate();
   const auth = getAuth();
   const user = auth.currentUser;
@@ -66,9 +74,10 @@ const Sidebar: React.FC<SidebarProps> = ({ selectedChannel, onSelectChannel }) =
   }, [popoverOpen]);
 
   return (
-    <aside className="w-64 bg-gray-100 text-black flex flex-col">
+    <aside className="w-64 bg-gray-100 text-black flex flex-col h-full">
       <div className="p-4 font-bold text-xl border-b border-gray-800">Comm-Sync Workspace</div>
       <nav className="flex-1 p-4 overflow-y-auto">
+        {/* Channels Section */}
         <div className="mb-2 text-xs text-gray-600 uppercase tracking-wider font-semibold">
           Channels
         </div>
@@ -89,7 +98,7 @@ const Sidebar: React.FC<SidebarProps> = ({ selectedChannel, onSelectChannel }) =
               className={`
                 mb-2 cursor-pointer rounded-lg px-3 py-2 transition-all
                 ${
-                  selectedChannel.id === channel.id
+                  selectedChannel?.id === channel.id
                     ? 'bg-blue-100 font-bold text-blue-900'
                     : 'hover:bg-gray-200 font-medium'
                 }
@@ -118,10 +127,45 @@ const Sidebar: React.FC<SidebarProps> = ({ selectedChannel, onSelectChannel }) =
               </div>
             </div>
           ))}
+        <div
+          className="p-4 cursor-pointer text-sm border-t border-gray-800"
+          onClick={handleAddChannel}
+        >
+          +Add Channels
+        </div>
+        {/* DM Section */}
+        <div className="mt-6 mb-2 text-xs text-gray-600 uppercase tracking-wider font-semibold">
+          Direct Messages
+        </div>
+        <div>
+          {dmUsers.length === 0 && <div className="text-xs text-gray-400">No DM users found.</div>}
+          {dmUsers.map((dmUser) => (
+            <div
+              key={dmUser.id}
+              className={`mb-2 cursor-pointer rounded-lg px-3 py-2 flex items-center gap-2 transition-all ${
+                selectedDmUser?.id === dmUser.id
+                  ? 'bg-purple-100 font-bold text-purple-900'
+                  : 'hover:bg-gray-200 font-medium'
+              }`}
+              onClick={() => onSelectDmUser(dmUser)}
+            >
+              {/* Avatar */}
+              {dmUser.photoURL ? (
+                <img
+                  src={dmUser.photoURL}
+                  alt={dmUser.displayName}
+                  className="w-7 h-7 rounded-full border border-gray-300"
+                />
+              ) : (
+                <div className="w-7 h-7 rounded-full bg-gray-400 flex items-center justify-center text-white font-bold text-base">
+                  {dmUser.displayName?.[0]?.toUpperCase() || 'U'}
+                </div>
+              )}
+              <span>{dmUser.displayName}</span>
+            </div>
+          ))}
+        </div>
       </nav>
-      <div className="p-4 cursor-pointer text-sm" onClick={handleAddChannel}>
-        +Add Channels
-      </div>
       <AddChannelDialog
         open={openAddChannel}
         onClose={() => setOpenAddChannel(false)}
